@@ -21,6 +21,25 @@ def get_greeting(name: str) -> str:
     """Get a personalized greeting"""
     return f"Hello, {name}!"
 
+@mcp.resource("file://documents/{name}")
+def read_document(name: str) -> str:
+    """Read a document by name."""
+    # This would normally read from disk
+    return f"Content of {name}"
+
+@mcp.resource("config://settings")
+def get_settings() -> str:
+    """Get application settings."""
+    return """{
+    "theme": "dark",
+    "language": "en",
+    "debug": false
+    }"""
+
+@mcp.resource("usage://guide")
+def get_usage() -> str:
+    with open("docs/usage.txt") as f:
+        return f.read()
 
 # @mcp_echo.resource("echo://{message}")
 # def echo_resource(message: str) -> str:
