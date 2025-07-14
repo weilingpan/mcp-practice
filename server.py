@@ -36,10 +36,16 @@ def get_settings() -> str:
     "debug": false
     }"""
 
+
 @mcp.resource("usage://guide")
 def get_usage() -> str:
     with open("docs/usage.txt") as f:
         return f.read()
+
+# 提供檔案下載連結
+@mcp.resource("file://download_link/{filename}")
+def get_download_link(filename: str) -> str:
+    return f"http://localhost:8001/download/{filename}"
 
 # @mcp_echo.resource("echo://{message}")
 # def echo_resource(message: str) -> str:
