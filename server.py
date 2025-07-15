@@ -14,6 +14,10 @@ def add(a: int, b: int) -> int:
     """Add two numbers"""
     return a + b
 
+@mcp.tool()
+def multiply(a: int, b: int) -> int:
+    """Multiply two numbers"""
+    return a * b
 
 # Add a dynamic greeting resource
 @mcp.resource("greeting://{name}")
@@ -66,5 +70,6 @@ def get_download_link(filename: str) -> str:
 # uv run mcp dev server.py
 
 if __name__ == "__main__":
-    mcp.run(transport="sse")
+    mcp.run(transport="stdio") #transport="sse"
     # uv run server.py
+    # python server.py
